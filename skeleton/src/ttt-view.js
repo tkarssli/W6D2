@@ -35,6 +35,7 @@ class View {
     }
         if (this.game.winner()){
           const winner = this.game.winner()
+          $('.overlay').show()
           $('.cell').addClass('lost')
           $(`.${winner}`).addClass("won")
           // $(`.${winner}`).removeClass("lost")
@@ -54,6 +55,13 @@ class View {
     const $board = $('<div>');
     $board.addClass('board');
     this.$el.append($board);
+
+    const $overlay = $('<div>');
+    $overlay.addClass('overlay');
+    $board.append($overlay)
+    $('.overlay').hide();
+
+
     $board.append('<ul>');
     for (let i = 0; i < 9; i++) {
       let $cell = $('<li>');
